@@ -256,9 +256,9 @@ namespace Bottleneck.Nebula
     {
         public override void ProcessPacket(Bottleneck_EntryRespone packet, INebulaConnection conn)
         {
-            for (int i = 0; i < UIRoot.instance.uiGame.statWindow.productEntriesLen; i++)
+            for (int i = 0; i < UIRoot.instance.uiGame.statWindow.entries.Length; i++)
             {
-                var entry = UIRoot.instance.uiGame.statWindow.productEntries[i];
+                var entry = UIRoot.instance.uiGame.statWindow.entries[i];
                 if (entry?.entryData != null && entry.entryData.itemId == packet.ItemId)
                 {
                     var elt = BottleneckPlugin.Instance.GetEnhanceElement(entry);

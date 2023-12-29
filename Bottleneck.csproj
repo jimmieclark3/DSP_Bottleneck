@@ -6,7 +6,12 @@
     <Description>Production bottleneck finder</Description>
     <Version>1.0.17</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>latest</LangVersion>
+	  <RestoreAdditionalProjectSources>
+		  https://api.nuget.org/v3/index.json;
+		  https://nuget.bepinex.dev/v3/index.json;
+		  https://nuget.samboy.dev/v3/index.json
+	  </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

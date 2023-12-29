@@ -466,7 +466,7 @@ namespace Bottleneck.Stats
                     filterStr = value;
                 }
 
-                __instance.ComputeDisplayProductEntries();
+                __instance.ComputeDisplayEntries();
             });
             // taken from thecodershome's PR on github: https://github.com/DysonSphereMod/QOL/pull/128
             _inputField.onEndEdit.AddListener(value =>

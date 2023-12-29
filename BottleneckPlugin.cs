@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Bootstrap;
 using Bottleneck.Nebula;
@@ -9,6 +10,8 @@ using Bottleneck.Util;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
+
+[assembly: InternalsVisibleTo("NebulaCompatibilityAssist")]
 
 namespace Bottleneck
 {
@@ -407,7 +410,7 @@ namespace Bottleneck
             }
         }
 
-        [HarmonyPrefix, HarmonyPatch(typeof(UIStatisticsWindow), nameof(UIStatisticsWindow.ComputeDisplayProductEntries))]
+        [HarmonyPrefix, HarmonyPatch(typeof(UIStatisticsWindow), nameof(UIStatisticsWindow.ComputeDisplayEntries))]
         public static void UIProductionStatWindow_ComputeDisplayEntries_Prefix(UIStatisticsWindow __instance)
         {
             if (_instance == null || __instance == null)

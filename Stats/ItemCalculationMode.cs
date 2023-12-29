@@ -27,18 +27,18 @@ namespace Bottleneck.Stats
             _mode = ItemCalculationMode.None,
         };
 
-        private ItemCalculationMode _mode = ItemCalculationMode.Normal;
-        private bool _enabled;
+        internal ItemCalculationMode _mode = ItemCalculationMode.Normal;
+        internal bool _enabled;
 
         public readonly int productId;
 
-        private ConfigEntry<string> _configEntry;
-        private static readonly Dictionary<int, ConfigEntry<string>> ConfigEntries = new();
-        private static readonly Dictionary<int, ItemCalculationRuntimeSetting> Pool = new();
-        private static ConfigFile configFile;
-        private readonly ItemProto _itemProto;
+        internal ConfigEntry<string> _configEntry;
+        internal static readonly Dictionary<int, ConfigEntry<string>> ConfigEntries = new();
+        internal static readonly Dictionary<int, ItemCalculationRuntimeSetting> Pool = new();
+        internal static ConfigFile configFile;
+        internal readonly ItemProto _itemProto;
 
-        private ItemCalculationRuntimeSetting(int productId)
+        internal ItemCalculationRuntimeSetting(int productId)
         {
             this.productId = productId;
             var proto = LDB.items.Select(productId);
@@ -77,13 +77,13 @@ namespace Bottleneck.Stats
             get { return SpeedSupported && _itemProto.recipes.Any(r => r.productive); }
         }
 
-        private void Save()
+        internal void Save()
         {
             _configEntry.Value = Serialize();
             Log.Debug($"saved {productId} entry {_configEntry.Value}");
         }
 
-        private static ItemCalculationRuntimeSetting Deserialize(string strVal)
+        internal static ItemCalculationRuntimeSetting Deserialize(string strVal)
         {
             var serializableRuntimeState = JsonUtility.FromJson<SerializableRuntimeState>(strVal);
 
@@ -94,7 +94,7 @@ namespace Bottleneck.Stats
             };
         }
 
-        private string Serialize()
+        internal string Serialize()
         {
             return JsonUtility.ToJson(SerializableRuntimeState.From(this));
         }
